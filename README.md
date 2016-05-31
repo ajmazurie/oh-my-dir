@@ -51,13 +51,14 @@ If you want to maintain multiple named environments in your project, just add a 
 
 ## Supported stacks
 
-Stack | Underlying<br>manager | Enforce<br>stack version?<sup>1</sup> | Allow named<br>environments?<sup>2</sup> | Supported<br>platforms
---- | --- | --- | --- | ---
-[Julia](http://julialang.org/) | [playground.jl](https://github.com/Rory-Finnegan/Playground.jl) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX
-[Perl](https://www.perl.org/) | [perlbrew](http://perlbrew.pl/) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX
-[Python](https://www.python.org/) | [pyenv](https://github.com/yyuu/pyenv) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX
-[Rust](https://www.rust-lang.org/) | [rsvm](http://sdepold.github.io/rsvm/) | :heavy_check_mark: | :x: | Unix, OSX
-[Conda](http://conda.pydata.org/docs/) | | :x: | :heavy_check_mark: | Unix, OSX
+Stack | Underlying<br>manager | Enforce<br>stack version?<sup>1</sup> | Allow named<br>environments?<sup>2</sup> | Supported<br>platforms | Status
+--- | --- | --- | --- | --- | ---
+[Julia](http://julialang.org/) | [playground.jl](https://github.com/Rory-Finnegan/Playground.jl) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX | Beta
+[Perl](https://www.perl.org/) | [perlbrew](http://perlbrew.pl/) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX | Stable
+[Python](https://www.python.org/) | [pyenv](https://github.com/yyuu/pyenv) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX | Stable
+[Rust](https://www.rust-lang.org/) | [rsvm](http://sdepold.github.io/rsvm/) | :heavy_check_mark: | :x: | Unix, OSX | Stable
+[Conda](http://conda.pydata.org/docs/) | | :x: | :heavy_check_mark: | Unix, OSX | Beta
 
 <sup>1</sup>: means that the underlying manager can switch to, and install if necessary, a specific version of the stack
+
 <sup>2</sup>: means that the underlying manager can switch to, and created if necessary, a named environment for the current stack and version
