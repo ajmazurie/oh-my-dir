@@ -1,6 +1,10 @@
-# Creation of local Miniconda environments
-# syntax: use conda [<environment name>]
-#   <environment name>: optional; environment name (default: 'default')
+# Ensure that a Conda package manager is installed
+
+# Syntax: use conda [<environment name>]
+#    <environment name>: name of the environment (default: 'default')
+
+# Notes:
+#    - the Conda environment is populated with Python 2.x
 
 use_conda() {
     ENV_NAME="${1:-default}"

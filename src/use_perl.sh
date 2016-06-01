@@ -1,9 +1,11 @@
-# Creation of local Perl environments
-# Syntax: use perl <perl version> [<environment name>]
-#   <perl version>: mandatory; version of the Perl interpreter
-#   <environment name>: optional; environment name (default: 'default')
+# Ensure that a Perl environment is installed
 
-# Powered by Perlbrew, see http://perlbrew.pl/
+# Syntax: use perl <perl version> [<environment name>]
+#    <perl version>: version of the Perl interpreter
+#    <environment name>: environment name (default: 'default')
+
+# Notes:
+#    - powered by Perlbrew, see http://perlbrew.pl/
 
 use_perl() {
     if [[ $# -lt 1 ]]; then

@@ -1,9 +1,11 @@
-# Creation of local Python environments
-# syntax: use python <python version> [<environment name>]
-#   <python version>: mandatory; version of the Python interpreter
-#   <environment name>: optional; environment name (default: 'default')
+# Ensure that a Python environment is installed
 
-# Powered by Pyenv, see https://github.com/yyuu/pyenv
+# Syntax: use python <python version> [<environment name>]
+#    <python version>: version of the Python interpreter
+#    <environment name>: environment name (default: 'default')
+
+# Notes:
+#    - powered by Pyenv, see https://github.com/yyuu/pyenv
 
 use_python() {
     if [[ $# -lt 1 ]]; then

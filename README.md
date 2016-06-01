@@ -53,11 +53,12 @@ If you want to maintain multiple named environments in your project, just add a 
 
 Stack | Underlying<br>manager | Enforce<br>stack version?<sup>1</sup> | Allow named<br>environments?<sup>2</sup> | Supported<br>platforms | Status
 --- | --- | --- | --- | --- | ---
+[Docker machine](https://docs.docker.com/machine/overview/) | *none* | :x: | :heavy_check_mark: | Unix, OSX | Stable
 [Julia](http://julialang.org/) | [playground.jl](https://github.com/Rory-Finnegan/Playground.jl) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX | Beta
 [Perl](https://www.perl.org/) | [perlbrew](http://perlbrew.pl/) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX | Stable
 [Python](https://www.python.org/) | [pyenv](https://github.com/yyuu/pyenv) | :heavy_check_mark: | :heavy_check_mark: | Unix, OSX | Stable
 [Rust](https://www.rust-lang.org/) | [rsvm](http://sdepold.github.io/rsvm/) | :heavy_check_mark: | :x: | Unix, OSX | Stable
-[Conda](http://conda.pydata.org/docs/) | | :x: | :heavy_check_mark: | Unix, OSX | Beta
+[Conda](http://conda.pydata.org/docs/) | *none* | :x: | :heavy_check_mark: | Unix, OSX | Beta
 
 <sup>1</sup>: means that the underlying manager can switch to, and install if necessary, a specific version of the stack
 

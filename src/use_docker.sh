@@ -1,6 +1,15 @@
-# Creation of Docker environment
+# Ensure that a Docker machine of a given type and name
+# exists and is accessible to the other Docker tools
 
-use_docker_machine() {
+# Syntax: use docker-machine [<machine name>] [<machine driver>]
+#    <machine name>: name of the Docker machine (default: 'default')
+#    <machine driver>: driver for the Docker machine (default: 'virtualbox');
+#        for a list of supported drivers see https://docs.docker.com/machine
+
+# Notes:
+#    - the resulting Docker machine will have RSYNC installed
+
+use_docker-machine() {
     ENV_NAME="${1:-default}"
     ENV_TYPE="${2:-virtualbox}"
 

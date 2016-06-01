@@ -1,9 +1,11 @@
-# Creation of local Julia environments
-# syntax: use julia <julia version> [<environment name>]
-#   <julia version>: mandatory; version of the Julia compiler
-#   <environment name>: optional; environment name (default: 'default')
+# Ensure that a Julia environment is installed
 
-# Powered by Playground.jl, see https://github.com/Rory-Finnegan/Playground.jl
+# Syntax: use julia <julia version> [<environment name>]
+#    <julia version>: version of the Julia compiler
+#    <environment name>: environment name (default: 'default')
+
+# Notes:
+#    - powered by Playground.jl, see https://github.com/Rory-Finnegan/Playground.jl
 
 use_julia() {
     if [[ $# -lt 1 ]]; then

@@ -1,9 +1,11 @@
-# Creation of local Rust environments
-# syntax: use rust <rust version> [<environment name>]
-#   <rust version>: mandatory; version of the Rust compiler
-#   <environment name>: optional; environment name (default: 'default')
+# Ensure that a Rust environment is installed
 
-# Powered by rsvm, see http://sdepold.github.io/rsvm/
+# Syntax: use rust <rust version> [<environment name>]
+#    <rust version>: version of the Rust compiler
+#    <environment name>: environment name (default: 'default')
+
+# Notes:
+#    - powered by rsvm, see http://sdepold.github.io/rsvm/
 
 use_rust() {
     if [[ $# -lt 1 ]]; then
