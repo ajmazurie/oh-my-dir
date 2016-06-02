@@ -17,7 +17,7 @@ use_julia() {
     # ensure that playground is installed
     local PLAYGROUND_ROOT="${HOME}/.direnv/playground"
     if [[ ! -d ${PLAYGROUND_ROOT} ]]; then
-        _print "installing Playground"
+        _print "julia: installing Playground.jl"
         OS_NAME=$(uname)
 
         if [ ${OS_NAME} == 'Darwin' ]; then
@@ -40,19 +40,19 @@ use_julia() {
     path_add LD_LIBRARY_PATH "${PLAYGROUND_ROOT}"
     path_add PATH "${PLAYGROUND_ROOT}"
     if ! has playground; then
-        _error "playground not found"
+        _error "julia: Playground.jl not found"
     fi
 
     # ensure that this version of Julia compiler is installed
     if [[ ! -L ${PLAYGROUND_ROOT}/bin/julia-$1 ]]; then
-        _print "installing Julia $1"
+        _print "julia: installing Julia compiler $1"
         playground install download $1
     fi
 
     # ensure that this environment exists
     local ENV_PATH="${PWD}/.env/playground-$1-${ENV_NAME}"
     if [[ ! -d ${ENV_PATH} ]]; then
-        _print "preparing Julia environment '${ENV_NAME}'"
+        _print "julia: preparing Julia environment '${ENV_NAME}'"
         mkdir -p "${ENV_PATH}/bin"
         ln -s "${PLAYGROUND_ROOT}/bin/julia-$1" "${ENV_PATH}/bin/julia"
     fi

@@ -17,23 +17,27 @@ use_python() {
     # ensure that Pyenv is installed
     export PYENV_ROOT="${HOME}/.direnv/pyenv"
     if [[ ! -d ${PYENV_ROOT} ]]; then
-        _print "installing Pyenv"
+        _print "python: installing Pyenv"
 
         curl -L "https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer" | bash
     fi
 
     # add pyenv to the PATH
     path_add PATH "${PYENV_ROOT}/bin"
-    path_add PATH "${PYENV_ROOT}/shims"
     if ! has pyenv; then
-        _error "pyenv not found"
+        _error "python: 'pyenv' executable not found"
     fi
 
     # ensure that this version of Python interpreter is installed
     if [[ ! -d ${PYENV_ROOT}/versions/$1 ]]; then
-        _print "installing Python $1"
+        _print "python: installing Python interpreter $1"
+
+        eval "$(pyenv init -)"
         pyenv install --skip-existing $1
-        pyenv exec pip install --upgrade pip
+
+        # upgrade pip, and install virtualenv
+        pyenv shell $1
+        pyenv exec pip install --upgrade --quiet --disable-pip-version-check pip
         pyenv exec pip install --quiet virtualenv
         pyenv rehash
     fi
@@ -42,7 +46,7 @@ use_python() {
     # ensure that this environment exists
     local ENV_PATH="${PWD}/.env/pyenv-$1-${ENV_NAME}"
     if [[ ! -d ${ENV_PATH} ]]; then
-        _print "preparing Python environment '${ENV_NAME}'"
+        _print "python: preparing Python environment '${ENV_NAME}'"
         virtualenv --always-copy "${ENV_PATH}"
     fi
 

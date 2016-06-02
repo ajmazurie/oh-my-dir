@@ -18,13 +18,13 @@ use_perl() {
     export PERLBREW_ROOT="${HOME}/.direnv/perlbrew"
     export PERLBREW_HOME="${PERLBREW_ROOT}"
     if [[ ! -d ${PERLBREW_ROOT} ]]; then
-        _print "installing Perlbrew"
+        _print "perl: installing Perlbrew"
         curl -L http://install.perlbrew.pl | bash
     fi
 
     source "${PERLBREW_HOME}/etc/bashrc"
     if ! has perlbrew; then
-        _error "perlbrew not found"
+        _error "perl: 'perlbrew' executable not found"
     fi
 
     if ! has cpanm; then
@@ -33,7 +33,7 @@ use_perl() {
 
     # ensure that this version of Perl interpreter is installed
     if ! perlbrew use $1; then
-        print "installing Perl $1"
+        print "perl: installing Perl interpreter $1"
         perlbrew install --notest $1
         perlbrew use $1
     fi
@@ -41,7 +41,7 @@ use_perl() {
     # ensure that this environment exists
     local ENV_PATH="${PWD}/.env/perlbrew-$1-${ENV_NAME}"
     if [[ ! -d ${ENV_PATH} ]]; then
-        _print "preparing Perl environment '${ENV_NAME}'"
+        _print "perl: preparing Perl environment '${ENV_NAME}'"
         mkdir -p "${ENV_PATH}"
     fi
 

@@ -15,14 +15,14 @@ use_conda() {
         OS_NAME=$(uname); WORD_SIZE=$(getconf LONG_BIT)
 
         if [ ${OS_NAME} == 'Darwin' ]; then
-            _print "installing Conda (64bit)"
+            _print "conda: installing Conda package manager (64bit)"
             package_name="Miniconda2-latest-MacOSX-x86_64"
         elif [ ${OS_NAME} == 'Linux' ]; then
             if [ ${WORD_SIZE} == '64' ]; then
-                _print "installing Conda (64bit)"
+                _print "conda: installing Conda package manager (64bit)"
                 package_name="Miniconda2-latest-Linux-x86_64"
             else
-                _print "installing Conda (32bit)"
+                _print "conda: installing Conda package manager (32bit)"
                 package_name="Miniconda2-latest-Linux-x86"
             fi
         else
@@ -37,13 +37,13 @@ use_conda() {
     # add miniconda to the PATH
     path_add PATH "${CONDA_ROOT}/bin"
     if ! has conda; then
-        _error "conda not found"
+        _error "conda: 'conda' executable not found"
     fi
 
     # ensure that this environment exists
     local ENV_PATH="${PWD}/.env/conda-${ENV_NAME}"
     if [[ ! -d ${ENV_PATH} ]]; then
-        _print "preparing Conda environment '${ENV_NAME}'"
+        _print "conda: preparing Conda environment '${ENV_NAME}'"
         conda create --prefix "${ENV_PATH}" --quiet python > /dev/null
     fi
 

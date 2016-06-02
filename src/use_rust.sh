@@ -17,7 +17,7 @@ use_rust() {
     # ensure that rsvm is installed
     export RSVM_ROOT="${HOME}/.direnv/rsvm"
     if [[ ! -d ${RSVM_ROOT} ]]; then
-        _print "installing rsvm"
+        _print "rust: installing rsvm"
 
         if ! has git; then
             _error "git not found"
@@ -28,12 +28,12 @@ use_rust() {
 
     source "${RSVM_ROOT}/rsvm.sh"
     if ! has rsvm; then
-        _error "rsvm not found"
+        _error "rust: 'rsvm' executable not found"
     fi
 
     # ensure this version of Rust compiler is installed
     if [[ ! -d ${RSVM_ROOT}/versions/$1 ]]; then
-        _print "installing Rust $1"
+        _print "rust: installing Rust compiler $1"
         rsvm install $1
         rm -rf "${RSVM_ROOT}/current"
     fi
