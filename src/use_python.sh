@@ -28,19 +28,21 @@ use_python() {
         _error "python: 'pyenv' executable not found"
     fi
 
+    eval "$(pyenv init -)"
+    pyenv shell $1
+
     # ensure that this version of Python interpreter is installed
     if [[ ! -d ${PYENV_ROOT}/versions/$1 ]]; then
         _print "python: installing Python interpreter $1"
 
-        eval "$(pyenv init -)"
         pyenv install --skip-existing $1
 
         # upgrade pip, and install virtualenv
-        pyenv shell $1
         pyenv exec pip install --upgrade --quiet --disable-pip-version-check pip
         pyenv exec pip install --quiet virtualenv
         pyenv rehash
     fi
+
     export PYENV_VERSION=$1
 
     # ensure that this environment exists

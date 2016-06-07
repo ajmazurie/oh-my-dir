@@ -55,10 +55,10 @@ If you want to maintain (and automatically switch to) multiple named environment
 Stack | Underlying<br>manager | Enforce<br>stack version?<sup>1</sup> | Allow named<br>environments?<sup>2</sup> | Relocatable?<sup>3</sup> | Supported<br>platforms | Status
 --- | --- | --- | --- | --- | --- | ---
 [Docker machine](https://docs.docker.com/machine/overview/) | n/a | :x: | :heavy_check_mark: | n/a | Unix, OSX | Stable
-[Julia](http://julialang.org/) | [playground.jl](https://github.com/Rory-Finnegan/Playground.jl) | :heavy_check_mark: | :heavy_check_mark: | ? | Unix, OSX | Beta
-[Perl](https://www.perl.org/) | [perlbrew](http://perlbrew.pl/) | :heavy_check_mark: | :heavy_check_mark: | ? | Unix, OSX | Stable
+[Julia](http://julialang.org/) | [playground.jl](https://github.com/Rory-Finnegan/Playground.jl) | :heavy_check_mark: | :heavy_check_mark: | untested | Unix, OSX | Beta
+[Perl](https://www.perl.org/) | [perlbrew](http://perlbrew.pl/) | :heavy_check_mark: | :heavy_check_mark: | untested | Unix, OSX | Stable
 [Python](https://www.python.org/) | [pyenv](https://github.com/yyuu/pyenv) | :heavy_check_mark: | :heavy_check_mark: | :x: | Unix, OSX | Stable
-[Rust](https://www.rust-lang.org/) | [rsvm](http://sdepold.github.io/rsvm/) | :heavy_check_mark: | :x: | : heavy_check_mark: | Unix, OSX | Stable
+[Rust](https://www.rust-lang.org/) | [rsvm](http://sdepold.github.io/rsvm/) | :heavy_check_mark: | :x: | :heavy_check_mark: | Unix, OSX | Stable
 [Conda](http://conda.pydata.org/docs/) | n/a | :x: | :heavy_check_mark: | :x: | Unix, OSX | Beta
 
 <sup>1</sup>: means that the underlying manager can switch to, and install if necessary, a specific version of the stack
