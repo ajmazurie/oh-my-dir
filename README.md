@@ -19,14 +19,14 @@ There are only three steps involved in the installation of **oh-my-dir**:
 1. Download and unzip the [latest archive](https://github.com/ajmazurie/oh-my-dir/archive/master.zip) from the **oh-my-dir** repository, or clone it
 2. Once in the **oh-my-dir** source folder, run `make install`
 
-> **Note** `make install` will overwrite any existing `~/.direnvrc` file; if you want to manually merge your file with the **oh-my-dir** functions, you can run `make build` instead and copy all or part of the newly created file `dist/direnvrc` in your existing `~/.direnvrc`.
+> **Note:** `make install` will overwrite any existing `~/.direnvrc` file; if you want to manually merge your file with the **oh-my-dir** functions, you can run `make build` instead and copy all or part of the newly created file `dist/direnvrc` in your existing `~/.direnvrc`.
 
 ## Quickstart
 
 1. In your project directory, create a `.envrc` file with your favorite editor and add one or more `use stack` instructions, with `stack` being the name of the stack optionally followed by a version number and an environment name (not all stacks support these options; please refer to the table in the last section).
 2. Then tell **direnv** to use your file by typing `direnv allow`, and **oh-my-dir** will switch to your stack and environment (or install/create it if needed).
 
-> **Note** a shortcut to the `.envrc` editing/allow cycle is to type `direnv edit .`, which will launch [$EDITOR](https://en.wikibooks.org/wiki/Guide_to_Unix/Environment_Variables#EDITOR) and automatically allow the resulting content.
+> **Note:** a shortcut to the `.envrc` editing/allow cycle is to type `direnv edit .`, which will launch [$EDITOR](https://en.wikibooks.org/wiki/Guide_to_Unix/Environment_Variables#EDITOR) and automatically allow the resulting content.
 
 For example if you want your project to use the version 2.7.10 of the Python interpreter just add `use python 2.7.10` in your `<project>/.envrc` file. **oh-my-dir** will check (and install if needed) for a Python-specific manager (here [pyenv](https://github.com/yyuu/pyenv)), the specified version of the Python interpreter, and an environment named `default` in `<project>/.env/` (default name for the environment if none provided). The relevant environment variables will be set for you to use this named environment:
 
@@ -46,9 +46,11 @@ $ which python
 my_project/.env/pyenv-2.7.10-default/bin/python
 ```
 
+> **Note:** while creating your environment **direnv** will likely complain that its initialization take too long, with a message such as `direnv is taking a while to execute. Use CTRL-C to give up`, which you can safely ignore.
+
 If you want to maintain (and automatically switch to) multiple named environments in your project, just add a name (e.g., `use python 2.7.10 production`).
 
-> **Note** the various **oh-my-dir** functions will use (and create if needed) a `~/.direnv` folder to store the stack-specific managers, and a `<project>/.env` folder to store the various named environments you created.
+> **Note:** the various **oh-my-dir** functions will use (and create if needed) a `~/.direnv` folder to store the stack-specific managers, and a `<project>/.env` folder to store the various named environments you created.
 
 ## Supported stacks
 
