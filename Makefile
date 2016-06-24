@@ -1,11 +1,14 @@
 
+SOURCES = $(wildcard src/*.sh)
+TARGET = direnvrc
+
 .PHONY: all
 all: build
 
 .PHONY: build
-build: dist/direnvrc
+build: dist/$(TARGET)
 
-dist/direnvrc: src
+dist/$(TARGET): $(SOURCES)
 	@mkdir -p dist
 	@cp src/commons.sh $@
 	@find src -name "use_*.sh" -exec \
@@ -13,7 +16,7 @@ dist/direnvrc: src
 
 .PHONY: install
 install: build
-	@cp dist/direnvrc $(HOME)/.direnvrc
+	@cp dist/$(TARGET) $(HOME)/.$(TARGET)
 
 .PHONY: clean
 clean:

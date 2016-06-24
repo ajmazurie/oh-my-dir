@@ -18,7 +18,6 @@ use_python() {
     export PYENV_ROOT="${HOME}/.direnv/pyenv"
     if [[ ! -d ${PYENV_ROOT} ]]; then
         _print "python: installing Pyenv"
-
         curl -L "https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer" | bash
     fi
 
@@ -29,22 +28,21 @@ use_python() {
     fi
 
     eval "$(pyenv init -)"
-    pyenv shell $1
 
     # ensure that this version of Python interpreter is installed
     if [[ ! -d ${PYENV_ROOT}/versions/$1 ]]; then
         _print "python: installing Python interpreter $1"
-
         pyenv install --skip-existing $1
 
-        # upgrade pip, and install virtualenv
+        # upgrade pip, setuptools then install virtualenv
+        pyenv shell $1
         pyenv exec pip install --upgrade --quiet setuptools
         pyenv exec pip install --upgrade --quiet --disable-pip-version-check pip
-        pyenv exec pip install --quiet virtualenv
+        pyenv exec pip install --upgrade --quiet virtualenv
         pyenv rehash
+    else
+        pyenv shell $1
     fi
-
-    export PYENV_VERSION=$1
 
     # ensure that this environment exists
     local ENV_PATH="${PWD}/.env/pyenv-$1-${ENV_NAME}"
