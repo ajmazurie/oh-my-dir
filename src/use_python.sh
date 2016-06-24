@@ -38,6 +38,7 @@ use_python() {
         pyenv install --skip-existing $1
 
         # upgrade pip, and install virtualenv
+        pyenv exec pip install --upgrade --quiet setuptools
         pyenv exec pip install --upgrade --quiet --disable-pip-version-check pip
         pyenv exec pip install --quiet virtualenv
         pyenv rehash
