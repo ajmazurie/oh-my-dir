@@ -27,15 +27,12 @@ use_perl() {
         _error "perl: 'perlbrew' executable not found"
     fi
 
-    if ! has cpanm; then
-        perlbrew install-cpanm
-    fi
-
     # ensure that this version of Perl interpreter is installed
     if ! perlbrew use $1; then
-        print "perl: installing Perl interpreter $1"
+        _print "perl: installing Perl interpreter $1"
         perlbrew install --notest $1
         perlbrew use $1
+        perlbrew install-cpanm
     fi
 
     # ensure that this environment exists
