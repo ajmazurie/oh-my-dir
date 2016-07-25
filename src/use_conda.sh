@@ -12,13 +12,13 @@ use_conda() {
     # ensure that conda is installed
     export CONDA_ROOT="${HOME}/.direnv/conda"
     if [[ ! -d ${CONDA_ROOT} ]]; then
-        OS_NAME=$(uname); WORD_SIZE=$(getconf LONG_BIT)
+        OS_NAME="$(uname)"; WORD_SIZE=$(getconf LONG_BIT)
 
-        if [ ${OS_NAME} == 'Darwin' ]; then
+        if [ "${OS_NAME}" == "Darwin" ]; then
             _print "conda: installing Conda package manager (64bit)"
             package_name="Miniconda2-latest-MacOSX-x86_64"
-        elif [ ${OS_NAME} == 'Linux' ]; then
-            if [ ${WORD_SIZE} == '64' ]; then
+        elif [ "${OS_NAME}" == "Linux" ]; then
+            if [ "${WORD_SIZE}" == "64" ]; then
                 _print "conda: installing Conda package manager (64bit)"
                 package_name="Miniconda2-latest-Linux-x86_64"
             else

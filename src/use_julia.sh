@@ -18,11 +18,11 @@ use_julia() {
     local PLAYGROUND_ROOT="${HOME}/.direnv/playground"
     if [[ ! -d ${PLAYGROUND_ROOT} ]]; then
         _print "julia: installing Playground.jl"
-        OS_NAME=$(uname)
+        OS_NAME="$(uname)"
 
-        if [ ${OS_NAME} == 'Darwin' ]; then
+        if [ "${OS_NAME}" == "Darwin" ]; then
             package_name="v0.0.6_pre-alpha/playground-osx.tar.gz"
-        elif [ ${OS_NAME} == 'Linux' ]; then
+        elif [ "${OS_NAME}" == "Linux" ]; then
             package_name="v0.0.6_pre-alpha/playground-linux.tar.gz"
         else
             _error "unsupported platform: ${OS_NAME}"

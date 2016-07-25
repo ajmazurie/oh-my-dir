@@ -16,12 +16,23 @@ use_docker-machine() {
     # if this platform has a need for docker-machine,
     if has docker-machine; then
         # ensure that a machine with the requested name exists
-        if ! docker-machine ls | grep ${ENV_NAME} > /dev/null; then
-            docker-machine create --driver ${ENV_TYPE} ${ENV_NAME}
-            docker-machine ssh ${ENV_NAME} -- tce-load -wi rsync
+        set +e; status=$(docker-machine status "${ENV_NAME}")
+        exit_code=$?; set -e
+
+        if [[ ${exit_code} -eq 1 ]]; then
+            _print "docker-machine: creating machine '${ENV_NAME}'"
+            docker-machine create --driver ${ENV_TYPE} "${ENV_NAME}"
+            docker-machine ssh "${ENV_NAME}" -- tce-load -wi rsync
+            status="Stopped"
+        fi
+
+        # ensure the machine is running
+        if [ "${status}" == "Stopped" ]; then
+            _print "docker-machine: starting machine '${ENV_NAME}'"
+            docker-machine start "${ENV_NAME}"
         fi
 
         # then export its environment variables
-        eval $(docker-machine env ${ENV_NAME})
+        eval $(docker-machine env "${ENV_NAME}")
     fi
 }
