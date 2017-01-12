@@ -1,4 +1,4 @@
-# Ensure that a Rust environment is installed
+# use_rust: Ensure that a Rust environment is installed (beta)
 
 # Syntax: use rust <rust version> [<environment name>]
 #    <rust version>: version of the Rust compiler
@@ -9,8 +9,7 @@
 
 use_rust() {
     if [[ $# -lt 1 ]]; then
-        _error "invalid syntax: should be 'use rust <rust version>'"
-    fi
+        _error "invalid syntax: should be 'use rust <rust version>'"; fi
 
     ENV_NAME="${2:-default}"
 
@@ -20,16 +19,14 @@ use_rust() {
         _print "rust: installing rsvm"
 
         if ! has git; then
-            _error "git not found"
-        fi
+            _error "git not found"; fi
 
         git clone git://github.com/sdepold/rsvm.git ${RSVM_ROOT}
     fi
 
     source "${RSVM_ROOT}/rsvm.sh"
     if ! has rsvm; then
-        _error "rust: 'rsvm' executable not found"
-    fi
+        _error "rust: 'rsvm' executable not found"; fi
 
     # ensure this version of Rust compiler is installed
     if [[ ! -d ${RSVM_ROOT}/versions/$1 ]]; then

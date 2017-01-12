@@ -1,4 +1,4 @@
-# Ensure that a Conda package manager is installed
+# use_conda: Ensure that a Conda package manager is installed and enabled (stable)
 
 # Syntax: use conda [<environment name>]
 #    <environment name>: name of the environment (default: 'default')
@@ -37,8 +37,7 @@ use_conda() {
     # add miniconda to the PATH
     path_add PATH "${CONDA_ROOT}/bin"
     if ! has conda; then
-        _error "conda: 'conda' executable not found"
-    fi
+        _error "conda: 'conda' executable not found"; fi
 
     # ensure that this environment exists
     local ENV_PATH="${PWD}/.env/conda-${ENV_NAME}"

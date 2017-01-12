@@ -1,4 +1,4 @@
-# Ensure that a Perl environment is installed
+# use_perl: Ensure that a Perl environment is installed and enabled (stable)
 
 # Syntax: use perl <perl version> [<environment name>]
 #    <perl version>: version of the Perl interpreter
@@ -24,8 +24,7 @@ use_perl() {
 
     source "${PERLBREW_HOME}/etc/bashrc"
     if ! has perlbrew; then
-        _error "perl: 'perlbrew' executable not found"
-    fi
+        _error "perl: 'perlbrew' executable not found"; fi
 
     # ensure that this version of Perl interpreter is installed
     if ! perlbrew use $1; then

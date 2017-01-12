@@ -1,4 +1,4 @@
-# Ensure that a Python environment is installed
+# use_python: Ensure that a Python environment is installed and enabled (stable)
 
 # Syntax: use python <python version> [<environment name>]
 #    <python version>: version of the Python interpreter

@@ -1,4 +1,4 @@
-# Ensure that a Julia environment is installed
+# use_julia: Ensure that a Julia environment is installed and enabled (alpha)
 
 # Syntax: use julia <julia version> [<environment name>]
 #    <julia version>: version of the Julia compiler
@@ -40,8 +40,7 @@ use_julia() {
     path_add LD_LIBRARY_PATH "${PLAYGROUND_ROOT}"
     path_add PATH "${PLAYGROUND_ROOT}"
     if ! has playground; then
-        _error "julia: Playground.jl not found"
-    fi
+        _error "julia: Playground.jl not found"; fi
 
     # ensure that this version of Julia compiler is installed
     if [[ ! -L ${PLAYGROUND_ROOT}/bin/julia-$1 ]]; then
@@ -63,6 +62,5 @@ use_julia() {
     path_add PATH "${ENV_PATH}/bin"
 
     if [[ ! -d ${JULIA_PKGDIR} ]]; then
-        julia --eval "Pkg.init()"
-    fi
+        julia --eval "Pkg.init()"; fi
 }

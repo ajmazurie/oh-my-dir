@@ -12,7 +12,7 @@ dist/$(TARGET): $(SOURCES)
 	@mkdir -p dist
 	@cp src/commons.sh $@
 	@find src -name "use_*.sh" -exec \
-	 sh -c '(echo; cat "{}") >> $@' \;
+	  sh -c '(echo; cat "{}") >> $@' \;
 
 .PHONY: install
 install: build
