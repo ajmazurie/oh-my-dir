@@ -7,13 +7,7 @@
 # Notes:
 #    - powered by Pyenv, see https://github.com/yyuu/pyenv
 
-use_python() {
-    if [[ $# -lt 1 ]]; then
-        _error "invalid syntax: should be 'use python <python version>'"
-    fi
-
-    ENV_NAME="${2:-default}"
-
+use_pyenv() {
     # ensure that Pyenv is installed
     export PYENV_ROOT="${HOME}/.direnv/pyenv"
     if [[ ! -d ${PYENV_ROOT} ]]; then
@@ -28,6 +22,17 @@ use_python() {
     fi
 
     eval "$(pyenv init -)"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=0
+}
+
+use_python() {
+    if [[ $# -lt 1 ]]; then
+        _error "invalid syntax: should be 'use python <python version>'"
+    fi
+
+    ENV_NAME="${2:-default}"
+
+    use pyenv
 
     # ensure that this version of Python interpreter is installed
     if [[ ! -d ${PYENV_ROOT}/versions/$1 ]]; then
@@ -52,6 +57,5 @@ use_python() {
     fi
 
     # activate this environment
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=0
     source "${ENV_PATH}/bin/activate"
 }
