@@ -1,5 +1,5 @@
 
-SOURCES = $(wildcard src/*.sh)
+SOURCES = $(wildcard modules/*.sh)
 TARGET = direnvrc
 
 .PHONY: all
@@ -10,8 +10,8 @@ build: dist/$(TARGET)
 
 dist/$(TARGET): $(SOURCES)
 	@mkdir -p dist
-	@cp src/commons.sh $@
-	@find src -name "use_*.sh" -exec \
+	@cp modules/commons.sh $@
+	@find modules -name "use_*.sh" -exec \
 	  sh -c '(echo; cat "{}") >> $@' \;
 
 .PHONY: install
