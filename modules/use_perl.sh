@@ -7,14 +7,8 @@
 # Notes:
 #    - powered by Perlbrew, see http://perlbrew.pl/
 
-use_perl() {
-    if [[ $# -lt 1 ]]; then
-        _error "invalid syntax; should be 'use perl <perl version>'"
-    fi
-
-    ENV_NAME="${2:-default}"
-
-    # ensure that {erlbrew is installed
+use_perlbrew() {
+    # ensure that Perlbrew is installed
     export PERLBREW_ROOT="${HOME}/.direnv/perlbrew"
     export PERLBREW_HOME="${PERLBREW_ROOT}"
     if [[ ! -d ${PERLBREW_ROOT} ]]; then
@@ -22,9 +16,20 @@ use_perl() {
         curl -L http://install.perlbrew.pl | bash
     fi
 
+    # add Perlbrew to the PATH
     source "${PERLBREW_HOME}/etc/bashrc"
     if ! has perlbrew; then
         _error "perl: 'perlbrew' executable not found"; fi
+}
+
+use_perl() {
+    if [[ $# -lt 1 ]]; then
+        _error "invalid syntax; should be 'use perl <perl version>'"
+    fi
+
+    ENV_NAME="${2:-default}"
+
+    use perlbrew
 
     # ensure that this version of Perl interpreter is installed
     if ! perlbrew use $1; then
