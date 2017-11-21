@@ -1,8 +1,8 @@
 # use_jvm: Ensure that a JVM environment is installed and enabled (stable)
 
-# Syntax: use jvm <package name> <package version>
-#    <package name>: name of the SDKMAN! package
-#    <package version>: version of the SDKMAN! package
+# Syntax: use jvm <package_name> [package_version]
+#    package_name: name of the SDKMAN! package (required)
+#    package_version: version of the SDKMAN! package (optional)
 
 # Notes:
 #    - powered by SDKMAN!, see http://sdkman.io/
@@ -23,7 +23,7 @@ use_sdkman() {
 }
 
 use_jvm() {
-    if [[ $# -lt 2 ]]; then
+    if [[ $# -lt 1 ]]; then
         _error "invalid syntax: should be 'use jvm <package name> <package version>'"
     fi
 
